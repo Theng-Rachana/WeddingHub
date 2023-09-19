@@ -38,10 +38,18 @@ dependencies:
   url_strategy: ^0.2.0
   get: ^4.6.5
   lottie: ^2.6.0
+  flutter_animate: ^4.2.0+1
 dev_dependencies:
   flutter_native_splash: ^2.3.2
   flutter_test:
     sdk: flutter
+
+  flutter_launcher_icons: ^0.13.1
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assert/photo_2023-08-31_15-20-28.jpg"
 
   animated_splash_screen:
 

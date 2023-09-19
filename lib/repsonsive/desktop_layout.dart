@@ -1,8 +1,7 @@
-import 'dart:js';
+// import 'dart:js';
 
 import 'package:flutter/material.dart';
-import 'package:weddinghub/repsonsive/constant.dart';
- 
+ import 'package:flutter_animate/flutter_animate.dart';
 class DesktopPage extends StatefulWidget {
   DesktopPage({super.key});
   @override
@@ -61,6 +60,7 @@ class _DesktopPageState extends State<DesktopPage> {
                             Menubar(menu: "About"),
                             Menubar(menu: "Feature"),
                             Menubar(menu: "Package"),
+                            Menubar(menu: "Account"),
                           ]),
                       ),
                       Flexible(
@@ -126,7 +126,7 @@ class _DesktopPageState extends State<DesktopPage> {
                                         child: Padding(
                                           padding: EdgeInsets.only(left: 20,right: 32),
                                           child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                                             children: [
                                               Icon(Icons.apple,size: 40,),
                                               Text("App Store",textAlign: TextAlign.center,style: TextStyle(fontSize: 18,fontWeight: FontWeight.w400),),
@@ -188,9 +188,9 @@ class _DesktopPageState extends State<DesktopPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        infowidget(customicons:'assert/photo_2023-09-04_13-19-29.jpg' , titlename: "Guests", discription: "This id function that allow their guests your wedding agenda set location."),
-                        infowidget(customicons:'assert/photo_2023-09-04_13-19-40.jpg' , titlename: "Supplier", discription: "This id function that allow their guests your wedding agenda set location."),
-                        infowidget(customicons:'assert/photo_2023-09-04_13-19-44.jpg' , titlename: "Groom & pride", discription: "This id function that allow their guests your wedding agenda set location."),
+                        infowidget(customicons:'assert/photo_2023-09-04_13-19-29.jpg' , titlename: "Guests", discription: "This id function that allow their guests your wedding agenda set location." ,wit: isScreenWide? screenwidth.size.width * 0.25:screenwidth.size.width * 0.3,).animate(delay: Duration(seconds: 2)).fadeIn(duration: Duration(seconds: 1)).moveX(begin: -100),
+                        infowidget(customicons:'assert/photo_2023-09-04_13-19-40.jpg' , titlename: "Supplier", discription: "This id function that allow their guests your wedding agenda set location.",wit: isScreenWide? screenwidth.size.width * 0.25:screenwidth.size.width * 0.3,).animate(delay: Duration(seconds: 1)).fadeIn(duration: Duration(seconds: 1)).moveX(begin: -100),
+                        infowidget(customicons:'assert/photo_2023-09-04_13-19-44.jpg' , titlename: "Groom & pride", discription: "This id function that allow their guests your wedding agenda set location.",wit: isScreenWide? screenwidth.size.width * 0.25:screenwidth.size.width * 0.3,).animate().fadeIn(duration: Duration(seconds: 1)).moveX(begin: -100),
                       ],
                     ),
                 ),
@@ -235,8 +235,8 @@ class _DesktopPageState extends State<DesktopPage> {
                       ),
                     ),
 
-                    const Padding(
-                      padding:EdgeInsets.only(top: 337,left: 156,right: 156,bottom: 172),
+                    Padding(
+                      padding:EdgeInsets.only(top: 337,left: isScreenWide? 156: 70,right: isScreenWide?156:70,bottom: 172),
                       child: SizedBox(
                         height: 973,
                         child: Column(
@@ -282,29 +282,26 @@ class _DesktopPageState extends State<DesktopPage> {
                 padding:  const EdgeInsets.only(top: 112,left: 121,right: 171),
                 child: Center(
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Expanded(
-                        flex: 1,
-                        child: SizedBox(
-                          width: 600,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Padding(
-                                padding: EdgeInsets.only(bottom: 55),
-                                child: Text("Frequantly asked question",textAlign: TextAlign.start,style: TextStyle(fontSize: 40,fontWeight: FontWeight.w600,color: Color.fromARGB(255,245, 97, 57)),),
-                              ),
-                              Questionwidget(text: "What is Wedding hub?"),
-                              Questionwidget(text: "What service Wedding hub provide?"),
-                              Questionwidget(text: "How to get marriege using Wedding hub?"),
-                              Questionwidget(text: "How can I become a supplier in Wedding hub?"),
-                            ],
-                          ),
+                      Container(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.only(bottom: 55),
+                              child: Text("Frequantly asked question",textAlign: TextAlign.start,style: TextStyle(fontSize: 40,fontWeight: FontWeight.w600,color: Color.fromARGB(255,245, 97, 57)),),
+                            ),
+                            Questionwidget(text: "What is Wedding hub?"),
+                            Questionwidget(text: "What service Wedding hub provide?"),
+                            Questionwidget(text: "How to get marriege using Wedding hub?"),
+                            Questionwidget(text: "How can I become a supplier in Wedding hub?"),
+                          ],
                         ),
                       ),
-                      const Expanded(
-                        flex: 1,
-                        child: Image(image: AssetImage("assert/photo_2023-09-05_15-32-07.jpg"),width: 436,height: 416,),),
+                      Visibility(
+                        visible: MediaQuery.of(context).size.width > 1200? true:false,
+                        child: Image(image: AssetImage("assert/photo_2023-09-05_15-32-07.jpg"),width: 400,height: 416,),),
                     ],
                   ),
                 ),
@@ -328,7 +325,7 @@ class _DesktopPageState extends State<DesktopPage> {
                 child: Row(
                   children: [
                     Padding(
-                      padding:  EdgeInsets.only(top: 126,left: 245,right: 222),
+                      padding:  EdgeInsets.only(top: 126,left: screenwidth.size.width * 0.12,right: screenwidth.size.width * 0.1),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(40),
                         child:   Image(image: AssetImage("assert/photo_2023-09-06_12-05-58.jpg"),width: 250,)),
@@ -399,51 +396,51 @@ class Menubar extends StatelessWidget {
 class infowidget extends StatelessWidget {
    infowidget({super.key, required this.customicons,
               required this.titlename,
-              required this.discription});
+              required this.discription,
+              required this.wit});
   String customicons;
   String titlename;
   String discription;
+  double wit;
   
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      child: Container(
-              width: 324,
-              height: 416,
-              decoration:const BoxDecoration(
-                color: Colors.white,
-                boxShadow:[
-                  BoxShadow(
-                    color: Color.fromARGB(255, 134, 134, 134),
-                    blurRadius: 5,
-                    offset: Offset(4, 6)
+    return Container(
+            width: wit,
+            height: 416,
+            decoration:const BoxDecoration(
+              color: Colors.white,
+              boxShadow:[
+                BoxShadow(
+                  color: Color.fromARGB(255, 134, 134, 134),
+                  blurRadius: 5,
+                  offset: Offset(4, 6)
+                ),
+              ],
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(top: 46,bottom: 46),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Image(image: AssetImage(customicons),
+                    width: 100,
+                    height: 97,
                   ),
+                  Text(titlename,
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w700,
+                      color: Color.fromARGB(255, 245, 98, 57)
+                    ),
+                  ),
+                  SizedBox(
+                    width: 189,
+                    child: Text(discription,textAlign: TextAlign.center,style: const TextStyle(fontSize: 20,fontWeight: FontWeight.w400,color: Color.fromARGB(255, 30, 50, 97)),)),
                 ],
               ),
-              child: Padding(
-                padding: const EdgeInsets.only(top: 46,bottom: 46),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Image(image: AssetImage(customicons),
-                      width: 100,
-                      height: 97,
-                    ),
-                    Text(titlename,
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w700,
-                        color: Color.fromARGB(255, 245, 98, 57)
-                      ),
-                    ),
-                    SizedBox(
-                      width: 189,
-                      child: Text(discription,textAlign: TextAlign.center,style: const TextStyle(fontSize: 20,fontWeight: FontWeight.w400,color: Color.fromARGB(255, 30, 50, 97)),)),
-                  ],
-                ),
-              )
-            ),
-    );
+            )
+          );
   }
 }
 
@@ -455,10 +452,12 @@ class Contain3leftside  extends StatelessWidget {
   String discript;
   @override
   Widget build(BuildContext context) {
+    var screenwidth = MediaQuery.of(context);
+    var isScreenWide = MediaQuery.of(context).size.width >= 1100;
     return  Padding(
-      padding: const EdgeInsets.only(top: 133),
+      padding: EdgeInsets.only(top: isScreenWide? 133 : 40 ),
       child: SizedBox(
-        width: 380,
+        width: screenwidth.size.width * 0.5,
         height: 400,
         child: Column(
           children: [
